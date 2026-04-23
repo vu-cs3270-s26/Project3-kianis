@@ -5,7 +5,12 @@
 
 use crate::solver::Grid;
 
-/// Returns a border-formatted string representation of a Sudoku grid.
+/**
+ * Returns a border-formatted string representation of a Sudoku grid.
+ *
+ * @param grid Sudoku grid.
+ * @return Printable grid with borders.
+ */
 pub fn format_grid(grid: &Grid) -> String {
     let mut output = String::new();
     let border = "+-------+-------+-------+\n";

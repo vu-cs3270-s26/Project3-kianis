@@ -8,7 +8,12 @@ use std::path::Path;
 
 use crate::solver::Grid;
 
-/// Read puzzle from file into sudoku solver
+/**
+ * Read puzzle from file into sudoku solver.
+ *
+ * @param path Path to a puzzle text file.
+ * @return Parsed 9x9 Sudoku grid or an error message.
+ */
 pub fn read_puzzle_from_file(path: &str) -> Result<Grid, String> {
     let text = fs::read_to_string(Path::new(path))
         .map_err(|err| format!("Failed to read '{path}': {err}"))?;
@@ -16,7 +21,12 @@ pub fn read_puzzle_from_file(path: &str) -> Result<Grid, String> {
     parse_grid(&text)
 }
 
-/// reads grid into valid format for sudoku solver
+/**
+ * Reads grid contents into valid format for Sudoku solver.
+ *
+ * @param contents Raw puzzle text.
+ * @return Parsed 9x9 Sudoku grid or an error message.
+ */
 fn parse_grid(contents: &str) -> Result<Grid, String> {
     // Support both plain token files and serialized list-like puzzle formats by
     // collecting all single-digit numeric cells that appear in the input.

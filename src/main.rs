@@ -7,7 +7,9 @@ use std::io::{self, Write};
 
 use cs3270_project3::{format_grid, read_puzzle_from_file, solve};
 
-/// Runs command-line Sudoku solver workflow.
+/**
+ * Runs command-line Sudoku solver workflow.
+ */
 fn main() {
     println!("Enter puzzle file path (example: txt/sudoku-test1.txt).");
     print!("Press <Enter> to use txt/sudoku-test1.txt: ");
