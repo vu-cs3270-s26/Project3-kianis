@@ -6,10 +6,10 @@
 use crate::solver::Grid;
 
 /**
- * Returns a border-formatted string representation of a Sudoku grid.
+ * Returns grid formatted with the borders included
  *
- * @param grid Sudoku grid.
- * @return Printable grid with borders.
+ * @param grid - sudoku grid.
+ * @return -grid with borders
  */
 pub fn format_grid(grid: &Grid) -> String {
     let mut output = String::new();

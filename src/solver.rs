@@ -9,10 +9,10 @@
 pub type Grid = [[u8; 9]; 9];
 
 /**
- * Main Sudoku solver function.
+ * Main Sudoku solver function
  *
- * @param grid Mutable Sudoku grid.
- * @return True when the puzzle is solved; otherwise false.
+ * @param grid - sudoku grid
+ * @return True if puzzle is solved otherwise false
  */
 pub fn solve(grid: &mut Grid) -> bool {
     match find_empty(grid) {
@@ -33,10 +33,10 @@ pub fn solve(grid: &mut Grid) -> bool {
 }
 
 /**
- * Returns the next empty cell in the grid.
+ * Returns the next empty cell in the grid
  *
- * @param grid Sudoku grid.
- * @return Row and column of next empty cell, or none.
+ * @param grid - sudoku grid
+ * @return where the next empty cell is
  */
 fn find_empty(grid: &Grid) -> Option<(usize, usize)> {
     for (row_idx, row) in grid.iter().enumerate() {
@@ -52,11 +52,11 @@ fn find_empty(grid: &Grid) -> Option<(usize, usize)> {
 /**
  * Returns true if we can place value in grid.
  *
- * @param grid Sudoku grid.
- * @param row Target row.
- * @param col Target column.
- * @param value Value to place.
- * @return True when value can be placed at row and col.
+ * @param grid - sudoku grid.
+ * @param row - target row.
+ * @param col - target column.
+ * @param value - place value
+ * @return true or false
  */
 fn can_place(grid: &Grid, row: usize, col: usize, value: u8) -> bool {
     !in_row(grid, row, value)
@@ -70,32 +70,32 @@ fn can_place(grid: &Grid, row: usize, col: usize, value: u8) -> bool {
  * @param grid Sudoku grid.
  * @param row Target row.
  * @param value Value to check.
- * @return True when value already exists in row.
+ * @return true or false
  */
 fn in_row(grid: &Grid, row: usize, value: u8) -> bool {
     grid[row].contains(&value)
 }
 
 /**
- * Returns true when value already exists in the column.
+ * Returns true if value already exists in the column.
  *
- * @param grid Sudoku grid.
- * @param col Target column.
- * @param value Value to check.
- * @return True when value already exists in column.
+ * @param grid - sudoku grid.
+ * @param col - target column.
+ * @param value - value to check.
+ * @return true or false
  */
 fn in_col(grid: &Grid, col: usize, value: u8) -> bool {
     (0..9).any(|row| grid[row][col] == value)
 }
 
 /**
- * Returns true when value already exists in the 3x3 subgrid.
+ * Returns true when value already exists 
  *
- * @param grid Sudoku grid.
- * @param row Target row.
- * @param col Target column.
- * @param value Value to check.
- * @return True when value already exists in the 3x3 subgrid.
+ * @param grid - sudoku grid.
+ * @param row - target row.
+ * @param col - target column.
+ * @param value - value to check.
+ * @return true or false
  */
 fn in_subgrid(grid: &Grid, row: usize, col: usize, value: u8) -> bool {
     let start_row = row - row % 3;

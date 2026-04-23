@@ -22,14 +22,12 @@ pub fn read_puzzle_from_file(path: &str) -> Result<Grid, String> {
 }
 
 /**
- * Reads grid contents into valid format for Sudoku solver.
+ * Reads grid contents into desired format for sudoku solver
  *
- * @param contents Raw puzzle text.
- * @return Parsed 9x9 Sudoku grid or an error message.
+ * @param contents - raw puzzle text.
+ * @return - written 9x9 sudoku grid or an error message.
  */
 fn parse_grid(contents: &str) -> Result<Grid, String> {
-    // Support both plain token files and serialized list-like puzzle formats by
-    // collecting all single-digit numeric cells that appear in the input.
     let values: Vec<u8> = contents
         .chars()
         .filter_map(|ch| ch.to_digit(10).map(|digit| digit as u8))
